@@ -57,8 +57,8 @@ public class ReentrantLockSample {
         try {
             Thread.sleep(100);
             b.start(); 
-            Thread.sleep(1000);
-            b.interrupt(); 
+            Thread.sleep(1000);	
+            b.interrupt(); 	// 等待1s 还没有获取到锁 就直接自我中断
         }
         catch (InterruptedException e) {
             e.printStackTrace();
