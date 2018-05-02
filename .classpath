@@ -7,5 +7,6 @@
 	<classpathentry kind="lib" path="lib/jedis-2.7.2.jar"/>
 	<classpathentry kind="lib" path="lib/junit-4.10.jar"/>
 	<classpathentry kind="lib" path="lib/activemq-all-5.14.5.jar"/>
+	<classpathentry kind="lib" path="lib/disruptor-3.3.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
