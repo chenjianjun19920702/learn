@@ -12,7 +12,7 @@ public class TradePublisher implements Runnable {
     Disruptor<Trade> disruptor;  
     private CountDownLatch latch;  
     
-    private static int LOOP=10;//模拟百万次交易的发生  
+    private static int LOOP = 10;	//模拟百万次交易的发生  
   
     public TradePublisher(CountDownLatch latch,Disruptor<Trade> disruptor) {  
         this.disruptor=disruptor;  
@@ -32,7 +32,7 @@ public class TradePublisher implements Runnable {
   
 class TradeEventTranslator implements EventTranslator<Trade>{  
     
-	private Random random=new Random();  
+	private Random random = new Random();  
     
 	@Override  
     public void translateTo(Trade event, long sequence) {  

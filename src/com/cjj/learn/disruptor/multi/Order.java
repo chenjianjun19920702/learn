@@ -3,9 +3,9 @@ package com.cjj.learn.disruptor.multi;
 
 public class Order {  
 	
-	private String id;//ID  
+	private String id; 		// ID  
 	private String name;
-	private double price;//金额  
+	private double price;	// 金额  
 	
 	public String getId() {
 		return id;
@@ -24,6 +24,11 @@ public class Order {
 	}
 	public void setPrice(double price) {
 		this.price = price;
+	}
+	
+	@Override
+	public String toString() {
+		return "Order [id=" + id + ", name=" + name + ", price=" + price + "]";
 	}
 	  
 }  

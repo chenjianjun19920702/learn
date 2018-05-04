@@ -11,10 +11,12 @@ import com.lmax.disruptor.WorkHandler;
 import com.lmax.disruptor.WorkerPool;
 
 public class Main2 {  
+	
     public static void main(String[] args) throws InterruptedException {  
         int BUFFER_SIZE=1024;  
         int THREAD_NUMBERS=4;  
         
+        // 事件工厂
         EventFactory<Trade> eventFactory = new EventFactory<Trade>() {  
             public Trade newInstance() {  
                 return new Trade();  
@@ -23,6 +25,7 @@ public class Main2 {
         
         RingBuffer<Trade> ringBuffer = RingBuffer.createSingleProducer(eventFactory, BUFFER_SIZE);  
           
+        // 创建SequenceBarrier 
         SequenceBarrier sequenceBarrier = ringBuffer.newBarrier();  
           
         ExecutorService executor = Executors.newFixedThreadPool(THREAD_NUMBERS);  
@@ -33,7 +36,7 @@ public class Main2 {
           
         workerPool.start(executor);  
           
-        //下面这个生产8个数据
+        // 下面这个生产8个数据
         for(int i=0;i<8;i++){  
             long seq=ringBuffer.next();  
             ringBuffer.get(seq).setPrice(Math.random()*9999);  

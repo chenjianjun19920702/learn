@@ -3,6 +3,7 @@ package com.cjj.learn.disruptor.multi;
 import java.nio.ByteBuffer;
 import java.util.UUID;
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import com.lmax.disruptor.EventFactory;
@@ -44,7 +45,10 @@ public class Main {
 						consumers);
 		
         ringBuffer.addGatingSequences(workerPool.getWorkerSequences());  
-        workerPool.start(Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors()));  
+        
+        ExecutorService executor = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
+        
+        workerPool.start(executor);  
         
         final CountDownLatch latch = new CountDownLatch(1);
         for (int i = 0; i < 100; i++) {  
@@ -68,6 +72,8 @@ public class Main {
         latch.countDown();
         Thread.sleep(5000);
         System.out.println("总数:" + consumers[0].getCount() );
+        workerPool.halt(); 
+        executor.shutdown();
 	}
 	
 	static class IntEventExceptionHandler implements ExceptionHandler {  
