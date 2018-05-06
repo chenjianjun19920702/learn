@@ -10,5 +10,10 @@
 	<classpathentry kind="lib" path="lib/disruptor-3.3.2.jar"/>
 	<classpathentry kind="lib" path="lib/zookeeper-3.4.10.jar"/>
 	<classpathentry kind="lib" path="lib/zkclient-0.10.jar"/>
+	<classpathentry kind="lib" path="lib/curator-client-4.0.1.jar"/>
+	<classpathentry kind="lib" path="lib/curator-framework-4.0.1.jar"/>
+	<classpathentry kind="lib" path="lib/curator-recipes-4.0.1.jar"/>
+	<classpathentry kind="lib" path="lib/google-collections-1.0.jar"/>
+	<classpathentry kind="lib" path="lib/curator-test-4.0.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
