@@ -9,7 +9,9 @@ public class TradeHandler implements EventHandler<Trade>, WorkHandler<Trade> {
 	  
     @Override  
     public void onEvent(Trade event, long sequence, boolean endOfBatch) throws Exception {  
-        this.onEvent(event);  
+        System.out.println("consumer:" + Thread.currentThread().getName() 
+				+ " Event: price=" + event.getPrice() + ",sequence=" + sequence + ",endOfBatch=" + endOfBatch);
+//        this.onEvent(event); 
     }  
   
     @Override  
