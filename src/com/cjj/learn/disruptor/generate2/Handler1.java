@@ -1,7 +1,6 @@
 package com.cjj.learn.disruptor.generate2;
 
 import java.util.Random;
-import java.util.UUID;
 
 import com.cjj.learn.disruptor.generate1.Trade;
 import com.lmax.disruptor.EventHandler;
@@ -16,10 +15,9 @@ public class Handler1 implements EventHandler<Trade>,WorkHandler<Trade> {
   
     @Override  
     public void onEvent(Trade event) throws Exception {  
-//    	event.setId(UUID.randomUUID().toString());   
-    	event.setName("h1");
-    	event.setPrice((new Random()).nextDouble());
-    	System.out.println(event);
-    	Thread.sleep(1000);
+    	/*System.out.println("handler1: set name");
+    	event.setName("h1");*/
+    	System.out.println("handler1: " + event);
+    	Thread.sleep(new Random().nextInt(3)*1000);
     }  
 }  

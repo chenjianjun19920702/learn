@@ -8,6 +8,7 @@ public class Consumer implements WorkHandler<Order>{
 	
 	private String consumerId;
 	
+	// 消费的计数  多个消费者不会重复消费同一条消息
 	private static AtomicInteger count = new AtomicInteger(0);
 	
 	public Consumer(String consumerId){

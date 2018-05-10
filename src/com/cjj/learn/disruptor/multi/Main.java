@@ -61,7 +61,7 @@ public class Main {
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
-					for(int j = 0; j < 100; j ++){
+					for(int j = 0; j < 100; j ++) {
 						p.onData(UUID.randomUUID().toString());
 					}
 				}
@@ -71,14 +71,24 @@ public class Main {
         System.out.println("---------------100个生产者同时开始生产-----------------");
         latch.countDown();
         Thread.sleep(5000);
-        System.out.println("总数:" + consumers[0].getCount() );
+        // 消费消息的个数 应该与 生产的消息个数相同 
+        System.out.println("总数:" + consumers[0].getCount());
         workerPool.halt(); 
         executor.shutdown();
 	}
 	
 	static class IntEventExceptionHandler implements ExceptionHandler {  
-	    public void handleEventException(Throwable ex, long sequence, Object event) {}  
-	    public void handleOnStartException(Throwable ex) {}  
-	    public void handleOnShutdownException(Throwable ex) {}  
+		
+	    public void handleEventException(Throwable ex, long sequence, Object event) {
+	    	System.out.println("handleEventException " + ex);  
+	    }  
+	    
+	    public void handleOnStartException(Throwable ex) {
+	    	System.out.println("handleOnStartException " + ex);  
+	    }  
+	    
+	    public void handleOnShutdownException(Throwable ex) {
+	    	System.out.println("handleOnShutdownException " + ex);  
+	    }  
 	} 
 }
