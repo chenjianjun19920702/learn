@@ -39,6 +39,8 @@ public class BlockingQueueModel implements Model {
 
 		@Override
 		public void consume() throws InterruptedException {
+			System.out.println("thread 消费 name :" + Thread.currentThread().getName() + 
+					",等待消费......");
 			Task task = blockingQueue.take();
 			// 模拟消费
 			Thread.sleep(1000* (new Random()).nextInt(5));
@@ -52,6 +54,8 @@ public class BlockingQueueModel implements Model {
 
 		@Override
 		public void produce() throws InterruptedException {
+			System.out.println("thread 生产 name:" + Thread.currentThread().getName() + 
+					",准备生产......");
 			// 模拟生产
 			Thread.sleep(1000* (new Random()).nextInt(5));
 			Task task = new Task(increTaskNo.getAndIncrement(), "cjj");
