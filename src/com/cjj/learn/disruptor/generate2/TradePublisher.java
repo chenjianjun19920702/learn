@@ -1,6 +1,7 @@
 package com.cjj.learn.disruptor.generate2;
 
 import java.util.Random;
+import java.util.UUID;
 import java.util.concurrent.CountDownLatch;
 
 import com.cjj.learn.disruptor.generate1.Trade;
@@ -12,7 +13,7 @@ public class TradePublisher implements Runnable {
     Disruptor<Trade> disruptor;  
     private CountDownLatch latch;  
     
-    private static int LOOP = 10;	//模拟百万次交易的发生  
+    private static int LOOP = 2;	//模拟百万次交易的发生  
   
     public TradePublisher(CountDownLatch latch,Disruptor<Trade> disruptor) {  
         this.disruptor=disruptor;  
@@ -40,7 +41,8 @@ class TradeEventTranslator implements EventTranslator<Trade>{
     }  
     
 	private Trade generateTrade(Trade trade){  
-        trade.setPrice(random.nextDouble()*9999);  
+//        trade.setPrice(random.nextDouble()*9999);  
+		trade.setId(UUID.randomUUID().toString());   
         return trade;  
     }  
 	

@@ -68,7 +68,7 @@ public class Main {
 			}).start();
         } 
         Thread.sleep(2000);
-        System.out.println("---------------开始生产-----------------");
+        System.out.println("---------------100个生产者同时开始生产-----------------");
         latch.countDown();
         Thread.sleep(5000);
         System.out.println("总数:" + consumers[0].getCount() );

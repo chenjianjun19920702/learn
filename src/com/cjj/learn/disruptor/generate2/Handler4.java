@@ -16,7 +16,7 @@ public class Handler4 implements EventHandler<Trade>,WorkHandler<Trade> {
   
     @Override  
     public void onEvent(Trade event) throws Exception {  
-    	event.setId(UUID.randomUUID().toString());   
+//    	event.setId(UUID.randomUUID().toString());   
     	event.setName("h4");
     	event.setPrice((new Random()).nextDouble());
     	System.out.println(event);

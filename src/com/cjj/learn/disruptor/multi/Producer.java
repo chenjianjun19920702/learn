@@ -30,6 +30,8 @@ public class Producer {
 			// 发布事件
 			// 注意，最后的 ringBuffer.publish 方法必须包含在 finally 中以确保必须得到调用；如果某个请求的 sequence 未被提交，将会堵塞后续的发布操作或者其它的 producer。
 			ringBuffer.publish(sequence);
+			System.out.println("thread name " + Thread.currentThread().getName() + ",发布数据,sequence is "
+						+ sequence + ",数据是：" + data);
 		}
 	}
 	

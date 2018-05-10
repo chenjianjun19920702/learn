@@ -10,7 +10,7 @@ public class Handler2 implements EventHandler<Trade> {
 	  
     @Override  
     public void onEvent(Trade event, long sequence,  boolean endOfBatch) throws Exception {  
-    	event.setId(UUID.randomUUID().toString());   
+//    	event.setId(UUID.randomUUID().toString());   
     	event.setName("h2");
     	event.setPrice((new Random()).nextDouble());
     	System.out.println(event);
