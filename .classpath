@@ -22,5 +22,6 @@
 	<classpathentry kind="lib" path="lib/reflectasm-1.11.3.jar"/>
 	<classpathentry kind="lib" path="lib/kryo-shaded-4.0.2.jar"/>
 	<classpathentry kind="lib" path="lib/asm-6.1.1.jar"/>
+	<classpathentry kind="lib" path="lib/netty-all-5.0.0.Alpha2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
