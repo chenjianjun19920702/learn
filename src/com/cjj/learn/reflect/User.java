@@ -47,7 +47,7 @@ public class User {
 	
 	@Override
 	public String toString() {
-		return "cjj user";
+		return "User [name=" + name + ", age=" + age + ", address=" + address + ", tel=" + tel + "]";
 	}
 
 }

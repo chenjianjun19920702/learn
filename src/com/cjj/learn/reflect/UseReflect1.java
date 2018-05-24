@@ -3,9 +3,9 @@ package com.cjj.learn.reflect;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 
-public class Test1 {
+public class UseReflect1 {
 
-	public Test1() {
+	public UseReflect1() {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -24,11 +24,10 @@ public class Test1 {
 		// 第三种方式：  
 		// java语言中任何一个java对象都有getClass 方法  
 		User e = new User();  
-		Class c3 = e.getClass(); // c3是运行时类 (e的运行时类是Employee) 
+		Class c3 = e.getClass(); // c3是运行时类 (e的运行时类是User) 
 		
 		System.out.println(c1.newInstance().toString());
 		System.out.println(c2.newInstance().toString());  
 		System.out.println(c3.newInstance().toString());  
 	}
-
 }

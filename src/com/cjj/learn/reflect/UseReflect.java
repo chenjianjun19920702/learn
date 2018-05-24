@@ -3,9 +3,9 @@ package com.cjj.learn.reflect;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 
-public class Test {
+public class UseReflect {
 
-	public Test() {
+	public UseReflect() {
 		// TODO Auto-generated constructor stub
 	}
 
