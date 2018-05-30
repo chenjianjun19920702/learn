@@ -25,5 +25,6 @@
 	<classpathentry kind="lib" path="lib/netty-all-5.0.0.Alpha2.jar"/>
 	<classpathentry kind="lib" path="lib/jboss-marshalling-serial-1.3.0.CR9.jar"/>
 	<classpathentry kind="lib" path="lib/jboss-marshalling-1.3.0.CR9.jar"/>
+	<classpathentry kind="lib" path="lib/akka-actor_2.12-2.5.13.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
