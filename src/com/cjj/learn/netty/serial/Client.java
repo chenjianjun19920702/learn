@@ -84,8 +84,10 @@ public class Client {
 			TimeUnit.SECONDS.sleep(4);
 		}
 
+		// 阻塞 5s后自动断开
 		cf.channel().closeFuture().sync();
 		
+		// 超时重连
 		new Thread(new Runnable() {
 			@Override
 			public void run() {
@@ -100,7 +102,8 @@ public class Client {
 					request.setId("" + 4);
 					request.setName("pro" + 4);
 					request.setRequestMessage("数据信息" + 4);
-					cf.channel().writeAndFlush(request);					
+					cf.channel().writeAndFlush(request);
+					// 阻塞 5s后自动断开
 					cf.channel().closeFuture().sync();
 					System.out.println("子线程结束.");
 				} catch (InterruptedException e) {
