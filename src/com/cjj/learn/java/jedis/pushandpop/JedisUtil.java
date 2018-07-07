@@ -7,6 +7,8 @@ import java.util.Set;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
+import redis.clients.jedis.ScanParams;
+import redis.clients.jedis.ScanResult;
 
 public class JedisUtil {
 
@@ -23,7 +25,7 @@ public class JedisUtil {
 
 	static {  
 		Configuration conf = Configuration.getInstance();  
-		JEDIS_IP = conf.getString("jedis.ip", "127.0.0.1");  
+		JEDIS_IP = conf.getString("jedis.ip", "10.211.55.4");  
 		JEDIS_PORT = conf.getInt("jedis.port", 6379);  
 		JEDIS_PASSWORD = conf.getString("jedis.password", null);  
 		JedisPoolConfig config = new JedisPoolConfig();  
@@ -38,6 +40,10 @@ public class JedisUtil {
 		config.setNumTestsPerEvictionRun(-1); 
 		jedisPool = new JedisPool(config, JEDIS_IP, JEDIS_PORT, 60000);  
 	}  
+	
+	public static Jedis getJedis() {
+		return jedisPool.getResource();
+	}
 
 	/** 
 	 * 获取数据 
@@ -51,6 +57,44 @@ public class JedisUtil {
 		try {  
 			jedis = jedisPool.getResource();  
 			value = jedis.get(key);  
+		} catch (Exception e) {  
+			//释放redis对象  
+			jedisPool.returnBrokenResource(jedis);  
+			e.printStackTrace();  
+		} finally {  
+			//返还到连接池  
+			close(jedis);  
+		}  
+
+		return value;  
+	}  
+	
+	public static Long incr(String key) {  
+
+		Long value = null;  
+		Jedis jedis = null;  
+		try {  
+			jedis = jedisPool.getResource();  
+			value = jedis.incr(key);
+		} catch (Exception e) {  
+			//释放redis对象  
+			jedisPool.returnBrokenResource(jedis);  
+			e.printStackTrace();  
+		} finally {  
+			//返还到连接池  
+			close(jedis);  
+		}  
+
+		return value;  
+	}  
+	
+	public static Long decr(String key) {  
+
+		Long value = null;  
+		Jedis jedis = null;  
+		try {  
+			jedis = jedisPool.getResource();  
+			value = jedis.decr(key);
 		} catch (Exception e) {  
 			//释放redis对象  
 			jedisPool.returnBrokenResource(jedis);  
@@ -388,7 +432,6 @@ public class JedisUtil {
 	public static void hmset(Object key, Map<String, String> hash, int time) {  
 		Jedis jedis = null;  
 		try {  
-
 			jedis = jedisPool.getResource();  
 			jedis.hmset(key.toString(), hash);  
 			jedis.expire(key.toString(), time);  
@@ -444,6 +487,46 @@ public class JedisUtil {
 		}  
 		return result;  
 	}  
+	
+	public static Set<String> keys(String pattern) {  
+		Set<String> result = null;  
+		Jedis jedis = null;  
+		try {  
+			jedis = jedisPool.getResource();  
+			result = jedis.keys(pattern);
+
+		} catch (Exception e) {  
+			//释放redis对象  
+			jedisPool.returnBrokenResource(jedis);  
+			e.printStackTrace();  
+
+		} finally {  
+			//返还到连接池  
+			close(jedis);  
+
+		}  
+		return result;  
+	}  
+	
+	public static ScanResult<String> scan(String cursor, ScanParams params) {  
+		ScanResult<String> result = null;  
+		Jedis jedis = null;  
+		try {  
+			jedis = jedisPool.getResource();  
+			result = jedis.scan(cursor, params);
+
+		} catch (Exception e) {  
+			//释放redis对象  
+			jedisPool.returnBrokenResource(jedis);  
+			e.printStackTrace();  
+
+		} finally {  
+			//返还到连接池  
+			close(jedis);  
+
+		}  
+		return result;  
+	} 
 
 	public static List<byte[]> lrange(byte[] key, int from, int to) {  
 		List<byte[]> result = null;  
