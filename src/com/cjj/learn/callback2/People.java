@@ -14,7 +14,7 @@ public class People {
 	/*
 	 * 异步回调
 	 */
-	public void goToPrintASyn(Callback callback, String text) {
+	public void goToPrintAsyn(Callback callback, String text) {
 		new Thread(new Runnable() {
 			public void run() {
 				printer.print(callback, text);

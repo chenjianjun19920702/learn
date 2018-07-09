@@ -19,12 +19,12 @@ public class Wang implements Listener {
 	}
 
 	public void play() {
-		System.out.println("我要去逛街去了");
+		System.out.println("我要去逛街去了，你去吗？");
 	}
 
 	@Override
 	public void onSucceed(String result) {
-		System.out.println("小李告诉我小王的答案是 ---> " + result);
+		System.out.println("小李回答说 ---> " + result);
 	}
 
 	@Override

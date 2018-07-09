@@ -12,7 +12,7 @@ public class Main2 {
 			}
 		};
 		System.out.println("需要打印的内容是 ---> " + "打印一份简历");
-		people.goToPrintSyn(callback, "打印一份简历");
-		System.out.println("我在等待 打印机 给我反馈");
+		people.goToPrintSyn(callback, "我的简历");
+		System.out.println("我在等待 打印机 给我打印");
 	}
 }

@@ -11,8 +11,9 @@ public class Main {
 				System.out.println("打印机告诉我的消息是 ---> " + msg);
 			}
 		};
-		System.out.println("需要打印的内容是 ---> " + "打印一份简历");
-		people.goToPrintASyn(callback, "打印一份简历");
-		System.out.println("我在等待 打印机 给我反馈");
+		System.out.println("需要打印的内容是 ---> " + "我的简历");
+		people.goToPrintAsyn(callback, "我的简历");
+//		people.goToPrintSyn(callback, "我的简历");
+		System.out.println("我在等待 打印机 给我打印");
 	}
 }
