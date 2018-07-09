@@ -20,13 +20,13 @@ public class Enum2Test {
 		System.out.println("enumSun 的 value = " + enumSun.getValue());
 		System.out.println("enumSun 的 isRest = " + enumSun.isRest());
 		
-		// EnumSet的使用
+		// EnumSet的使用 EnumSet保证集合中的元素不重复
         EnumSet<Enum2> weekSet = EnumSet.allOf(Enum2.class);
         for (Enum2 day : weekSet) {
             System.out.println(day);
         }
         
-        // EnumMap的使用
+        // EnumMap的使用 key是enum类型，而value则可以是任意类型
 		EnumMap<Enum2, String> weekMap = new EnumMap<Enum2, String>(Enum2.class);
         weekMap.put(Enum2.MON, "星期一");
         weekMap.put(Enum2.TUE, "星期二");
