@@ -13,6 +13,7 @@ import org.apache.activemq.ActiveMQConnectionFactory;
 public class Sender {
 	
 	public static void main(String[] args) {
+		
 		try {
 			//第一步：建立ConnectionFactory工厂对象，需要填入用户名、密码、以及要连接的地址，均使用默认即可，默认端口为"tcp://localhost:61616"
 			ConnectionFactory connectionFactory = new ActiveMQConnectionFactory(
@@ -39,7 +40,7 @@ public class Sender {
 			
 			//第七步：最后我们使用JMS规范的TextMessage形式创建数据（通过Session对象），并用MessageProducer的send方法发送数据。同理客户端使用receive方法进行接收数据。最后不要忘记关闭Connection连接。
 			
-			for(int i = 0 ; i < 500000 ; i ++){
+			for (int i = 0 ; i < 500000 ; i ++) {
 				TextMessage msg = session.createTextMessage("我是消息内容" + i);
 				// 第一个参数目标地址
 				// 第二个参数 具体的数据信息
@@ -49,7 +50,6 @@ public class Sender {
 				producer.send(destination, msg, DeliveryMode.NON_PERSISTENT, 0 , 1000L);
 				System.out.println("发送消息：" + msg.getText());
 				Thread.sleep(1000);
-				
 			}
 
 			if(connection != null){
@@ -57,7 +57,6 @@ public class Sender {
 			}			
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
-		
+		} 
 	}
 }
