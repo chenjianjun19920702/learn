@@ -1,7 +1,7 @@
 package com.cjj.learn.java.enumeration;
 
 public enum Color implements Behaviour {
-	RED("红色", 1), GREEN("绿色", 2), BLANK("白色", 3), YELLO("黄色", 4);
+	RED("红色", 1), GREEN("绿色", 2), BLANK("白色", 3), YELLOW("黄色", 4);
 	
 	//
 	private String name;

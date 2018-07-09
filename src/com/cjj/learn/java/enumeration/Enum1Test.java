@@ -1,20 +1,20 @@
 package com.cjj.learn.java.enumeration;
 
-public class Test {
+public class Enum1Test {
 
-	public Test() {
-		// TODO Auto-generated constructor stub
+	public Enum1Test() {
+		
 	}
 
 	public static void main(String[] args) {
-		for (EnumTest e : EnumTest.values()) {
-//			System.out.println(e.toString());
+		
+		for (Enum1 e : Enum1.values()) {
 			System.out.println(e.name() + "  " + e.ordinal());
 		}
 
 		System.out.println("----------------我是分隔线------------------");
 
-		EnumTest test = EnumTest.TUE;
+		Enum1 test = Enum1.TUE;
 		switch (test) {
 		case MON:
 			System.out.println("今天是星期一");
@@ -22,14 +22,13 @@ public class Test {
 		case TUE:
 			System.out.println("今天是星期二");
 			break;
-			// ... ...
 		default:
 			System.out.println(test);
 			break;
 		}
 		
-		//compareTo(E o)
-        switch (test.compareTo(EnumTest.MON)) {
+		// compareTo(E o)
+        switch (test.compareTo(Enum1.MON)) {
         case -1:
             System.out.println("TUE 在 MON 之前");
             break;
@@ -41,15 +40,14 @@ public class Test {
             break;
         }
          
-        //getDeclaringClass()
+        // getDeclaringClass()
         System.out.println("getDeclaringClass(): " + test.getDeclaringClass().getName());
          
-        //name() 和  toString()
+        // name() 和  toString()
         System.out.println("name(): " + test.name());
         System.out.println("toString(): " + test.toString());
          
-        //ordinal()， 返回值是从 0 开始
+        // ordinal()， 返回值是从 0 开始
         System.out.println("ordinal(): " + test.ordinal());
 	}
-
 }
