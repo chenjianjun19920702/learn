@@ -11,7 +11,7 @@ public class UseReflect {
 
 	public static void main(String args[]) {
 		// 获取整个类  
-		Class c = null;
+		Class<?> c = null;
 		try {
 			c = Class.forName("java.lang.Integer");
 		} catch (ClassNotFoundException e) {

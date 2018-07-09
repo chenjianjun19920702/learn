@@ -1,0 +1,1 @@
+http://blog.lichengwu.cn/java/2011/09/26/the-usage-of-enum-in-java/
