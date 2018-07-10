@@ -43,5 +43,4 @@ public class Apple {
     public void displayName(){
         System.out.println("水果的名字是：苹果");
     }
-
 }

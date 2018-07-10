@@ -2,14 +2,14 @@ package com.cjj.learn.java.annotation;
 
 public class AnnotationDemo {
 
-	@MyTag(name = "audi", size = 10)  
-    public Car car;  
+	@AnnotationTag(name = "audi", size = 10)  
+    public AnnotationCar car;  
   
-    public Car getCar() {  
+    public AnnotationCar getCar() {  
         return car;  
     }  
   
-    public void setCar(Car car) {  
+    public void setCar(AnnotationCar car) {  
         this.car = car;  
     }  
   

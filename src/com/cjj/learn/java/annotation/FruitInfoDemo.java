@@ -2,9 +2,9 @@ package com.cjj.learn.java.annotation;
 
 import java.lang.reflect.Field;
 
-public class FruitInfoUtil {
+public class FruitInfoDemo {
 
-	public FruitInfoUtil() {
+	public FruitInfoDemo() {
 	}
 
 	public static void getFruitInfo(Class<?> clazz){
@@ -33,7 +33,7 @@ public class FruitInfoUtil {
 	}
 
 	public static void main(String[] args) {
-		FruitInfoUtil.getFruitInfo(Apple.class);
+		FruitInfoDemo.getFruitInfo(Apple.class);
 	}
 
 }

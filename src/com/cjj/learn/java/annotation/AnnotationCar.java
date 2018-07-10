@@ -1,6 +1,6 @@
 package com.cjj.learn.java.annotation;
 
-public class Car {
+public class AnnotationCar {
 
 	private String name;  
     private int size;  
@@ -17,11 +17,11 @@ public class Car {
         this.size = size;  
     }  
       
-    public Car(){  
+    public AnnotationCar(){  
           
     }  
     
-    public Car(String name, int size){  
+    public AnnotationCar(String name, int size){  
         this.size = size;  
         this.name = name;  
     }  

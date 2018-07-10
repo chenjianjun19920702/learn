@@ -24,11 +24,11 @@ public @interface FruitProvider {
      * 供应商名称
      * @return
      */
-    public String name() default "";
+    public String name() default "鲜丰水果";
     
     /**
      * 供应商地址
      * @return
      */
-    public String address() default "";
+    public String address() default "杭州";
 }
