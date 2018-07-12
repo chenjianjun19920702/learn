@@ -19,6 +19,7 @@ public class UseCyclicBarrier {
 	        this.name = name;  
 	        this.timeout = timeout;
 	    }  
+	    
 	    @Override  
 	    public void run() {  
 	    	System.out.println("线程:"+Thread.currentThread().getName()+",run...");

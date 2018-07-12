@@ -6,9 +6,9 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * BlockingQueue的写法最简单。
+ * BlockingQueue 的写法最简单。
  * 核心思想是，把并发和容量控制封装在缓冲区中。
- * 而BlockingQueue的性质天生满足这个要求。
+ * 而 BlockingQueue 的性质天生满足这个要求。
  */
 public class BlockingQueueModel implements Model {
 	
@@ -34,7 +34,6 @@ public class BlockingQueueModel implements Model {
 		return new ProducerImpl();
 	}
 	
-	
 	public class ConsumerImpl extends AbstractConsumer implements Consumer, Runnable {
 
 		@Override
@@ -42,7 +41,7 @@ public class BlockingQueueModel implements Model {
 			System.out.println("thread 消费 name :" + Thread.currentThread().getName() + 
 					",等待消费......");
 			Task task = blockingQueue.take();
-			// 模拟消费
+			// 模拟消费时间
 			Thread.sleep(1000* (new Random()).nextInt(5));
 			System.out.println("thread 消费 name :" + Thread.currentThread().getName() + 
 					",task id="+task.getId()+",name="+task.getName());
@@ -56,7 +55,7 @@ public class BlockingQueueModel implements Model {
 		public void produce() throws InterruptedException {
 			System.out.println("thread 生产 name:" + Thread.currentThread().getName() + 
 					",准备生产......");
-			// 模拟生产
+			// 模拟生产时间
 			Thread.sleep(1000* (new Random()).nextInt(5));
 			Task task = new Task(increTaskNo.getAndIncrement(), "cjj");
 			blockingQueue.put(task);
@@ -67,11 +66,14 @@ public class BlockingQueueModel implements Model {
 	}
 	
 	public static void main(String[] args) {
+		
 		BlockingQueueModel bqm = new BlockingQueueModel(3);
+		// 多生产者
 		for (int i = 0; i < 2; i++) {
 	      new Thread(bqm.newRunnableConsumer()).start();
 	    }
-	    for (int i = 0; i < 5; i++) {
+		// 多消费者
+	    for (int i = 0; i < 1; i++) {
 	      new Thread(bqm.newRunnableProducer()).start();
 	    }
 	}

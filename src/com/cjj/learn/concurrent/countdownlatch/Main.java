@@ -1,8 +1,8 @@
 package com.cjj.learn.concurrent.countdownlatch;
 
 public class Main {
-	public static void main(String[] args) 
-	{
+	
+	public static void main(String[] args) {
 		boolean result = false;
 		try {
 			result = ApplicationStartupUtil.checkExternalService();

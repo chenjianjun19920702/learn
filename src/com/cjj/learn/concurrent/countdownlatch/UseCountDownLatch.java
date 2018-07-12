@@ -34,6 +34,7 @@ public class UseCountDownLatch {
 				}
 			}
 		});
+		
 		Thread t3 = new Thread(new Runnable() {
 			@Override
 			public void run() {

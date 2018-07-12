@@ -11,7 +11,6 @@ public abstract class AbstractConsumer implements Consumer, Runnable {
 				e.printStackTrace();
 				break;
 			}
-			
 		}
 	}
 

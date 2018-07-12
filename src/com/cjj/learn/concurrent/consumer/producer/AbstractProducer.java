@@ -11,7 +11,6 @@ public abstract class AbstractProducer implements Producer, Runnable {
 				e.printStackTrace();
 				break;
 			}
-			
 		}
 	}
 }

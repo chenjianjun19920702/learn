@@ -49,5 +49,4 @@ public abstract class BaseHealthChecker implements Runnable {
 			}
 		}
 	}
-
 }

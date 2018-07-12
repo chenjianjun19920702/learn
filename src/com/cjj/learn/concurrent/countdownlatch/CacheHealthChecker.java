@@ -19,5 +19,4 @@ public class CacheHealthChecker extends BaseHealthChecker {
 		}
 		System.out.println(this.getServiceName() + " is UP");
 	}
-
 }
