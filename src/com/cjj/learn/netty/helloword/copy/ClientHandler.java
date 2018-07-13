@@ -1,6 +1,5 @@
-package com.cjj.learn.netty.helloword;
+package com.cjj.learn.netty.helloword.copy;
 
-import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.util.ReferenceCountUtil;
@@ -11,10 +10,7 @@ public class ClientHandler extends ChannelHandlerAdapter {
 	public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
 		try {
 			// do something msg
-			ByteBuf buf = (ByteBuf) msg;
-			byte[] data = new byte[buf.readableBytes()];
-			buf.readBytes(data);
-			String request = new String(data, "utf-8");
+			String request = (String) msg;
 			System.out.println("Client 接收到服务端消息: " + request);
 		} finally {
 			ReferenceCountUtil.release(msg);

@@ -1,8 +1,9 @@
-package com.cjj.learn.netty.helloword;
+package com.cjj.learn.netty.helloword.copy;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
+import io.netty.channel.ChannelPipeline;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
@@ -27,13 +28,17 @@ public class Server {
 		.childHandler(new ChannelInitializer<SocketChannel>() {
 			@Override
 			protected void initChannel(SocketChannel sc) throws Exception {
-				sc.pipeline().addLast(new ServerHandler());
+				ChannelPipeline p = sc.pipeline();
+                p.addLast(new ByteToStringDecoder());
+                p.addLast(new StringToByteEncoder());
+                p.addLast(new ServerHandler());
 			}
 		});
 
 		// 绑定指定的端口 进行监听
 		ChannelFuture f = b.bind(8765).sync(); 
-
+		System.out.println("Server启动");
+		
 		// Thread.sleep(1000000);
 		f.channel().closeFuture().sync();
 

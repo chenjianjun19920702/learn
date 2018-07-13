@@ -1,6 +1,5 @@
-package com.cjj.learn.netty.helloword;
+package com.cjj.learn.netty.helloword.copy;
 
-import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
@@ -11,13 +10,10 @@ public class ServerHandler extends ChannelHandlerAdapter {
 	public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
 	
 			// do something msg
-			ByteBuf buf = (ByteBuf) msg;
-			byte[] data = new byte[buf.readableBytes()];
-			buf.readBytes(data);
-			String request = new String(data, "utf-8");
+			String request = (String) msg;
 			System.out.println("Server 接收消息: " + request);
 			// 写给客户端
-			String response = "我接收到你的消息，我是服务端";
+			String response = "server is receive";
 			ctx.writeAndFlush(Unpooled.copiedBuffer(response.getBytes()));
 			//.addListener(ChannelFutureListener.CLOSE);
 	}
