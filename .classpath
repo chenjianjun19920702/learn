@@ -34,5 +34,8 @@
 	<classpathentry kind="lib" path="lib/httpclient-4.4.1.jar"/>
 	<classpathentry kind="lib" path="lib/httpmime-4.4.1.jar"/>
 	<classpathentry kind="lib" path="lib/spring-data-redis-1.7.3.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/jackson-core-2.9.5.jar"/>
+	<classpathentry kind="lib" path="lib/jackson-databind-2.9.5.jar"/>
+	<classpathentry kind="lib" path="lib/jackson-annotations-2.9.5.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

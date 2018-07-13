@@ -1,4 +1,4 @@
-package com.cjj.learn.netty.helloword.copy;
+package com.cjj.learn.netty.decoder.custom;
 
 import java.util.List;
 import io.netty.buffer.ByteBuf;
@@ -11,8 +11,9 @@ public class ByteToStringDecoder extends ByteToMessageDecoder {
 	protected void decode(ChannelHandlerContext ctx, ByteBuf in,
 			List<Object> out) throws Exception {
 		// Check if there are at least 4 bytes readable
-		if (in.readableBytes() >= 4) {	
-			int len = 4;  // 只读四个字节
+		int len = DataUtil.yisouResult.length(); 
+		if (in.readableBytes() >= len) {	
+//			int len = 4;  // 只读四个字节
 			byte[] by = new byte[len];
 			for (int i=0;i<len;i++) {
 				by[i] = in.readByte();

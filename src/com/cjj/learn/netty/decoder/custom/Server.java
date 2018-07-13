@@ -1,8 +1,9 @@
-package com.cjj.learn.netty.helloword.copy;
+package com.cjj.learn.netty.decoder.custom;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
+import io.netty.channel.ChannelOption;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -24,6 +25,10 @@ public class Server {
 		b.group(bossGroup, workerGroup)
 		// 我要指定使用NioServerSocketChannel这种类型的通道
 		.channel(NioServerSocketChannel.class)
+//		.option(ChannelOption.SO_BACKLOG, 32 * 1024) 	// 设置tcp缓冲区
+//		.option(ChannelOption.SO_SNDBUF, 32 * 1024) 	// 设置发送缓冲大小
+//		.option(ChannelOption.SO_RCVBUF, 32 * 1024) 	// 这是接收缓冲大小
+//		.option(ChannelOption.SO_KEEPALIVE, true) 		// 保持连接
 		// 一定要使用 childHandler 去绑定具体的 事件处理器
 		.childHandler(new ChannelInitializer<SocketChannel>() {
 			@Override
@@ -37,7 +42,7 @@ public class Server {
 
 		// 绑定指定的端口 进行监听
 		ChannelFuture f = b.bind(8765).sync(); 
-		System.out.println("Server启动");
+		System.out.println("Server 启动。。。");
 		
 		// Thread.sleep(1000000);
 		f.channel().closeFuture().sync();

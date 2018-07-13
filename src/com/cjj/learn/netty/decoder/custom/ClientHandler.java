@@ -1,4 +1,4 @@
-package com.cjj.learn.netty.helloword.copy;
+package com.cjj.learn.netty.decoder.custom;
 
 import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;

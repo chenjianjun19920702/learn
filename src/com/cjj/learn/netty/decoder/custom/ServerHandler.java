@@ -1,4 +1,4 @@
-package com.cjj.learn.netty.helloword.copy;
+package com.cjj.learn.netty.decoder.custom;
 
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerAdapter;
@@ -8,14 +8,12 @@ public class ServerHandler extends ChannelHandlerAdapter {
 
 	@Override
 	public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-	
-			// do something msg
-			String request = (String) msg;
-			System.out.println("Server 接收消息: " + request);
-			// 写给客户端
-			String response = "server is receive";
-			ctx.writeAndFlush(Unpooled.copiedBuffer(response.getBytes()));
-			//.addListener(ChannelFutureListener.CLOSE);
+		// do something msg
+		String request = (String) msg;
+		System.out.println("Server 接收消息: " + request);
+		// 写回给客户端
+		ctx.writeAndFlush(Unpooled.copiedBuffer(request.getBytes()));
+		//.addListener(ChannelFutureListener.CLOSE);
 	}
 
 	@Override
