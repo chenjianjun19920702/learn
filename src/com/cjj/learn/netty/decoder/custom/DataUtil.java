@@ -13,10 +13,19 @@ public class DataUtil {
 		"sid": 35075595, "output": {"czrkxm": 1, "czrkgmsfhm": 1}, 
 		"result_time": 1480411648 }*/
 	
-	public static String yisouResult = "{\"output\":{\"sfzh\":-1,\"key\":1},\"api_id\":12306,\"account_id\":12306,\"result_time\":1480411648,\"_s_\":\"01020304\",\"task_type\":1001,\"sid\":123456789}";
+	public static String yisouResult = "{"
+			+ "\"task_type\":1001,"
+			+ "\"account_id\":12306,"
+			+ "\"api_id\":12306,"
+			+ "\"_s_\":\"01020304\","
+			+ "\"sid\":123456789,"
+			+ "\"output\":{\"sfzh\":-1,\"key\":1},"
+			+ "\"result_time\":1480411648"
+			+ "}";
 	
 	static {
-		Map<String, Object> data = new HashMap<String, Object>();
+		
+		/*Map<String, Object> data = new HashMap<String, Object>();
 		data.put("task_type", 1001);
 		data.put("account_id", 12306);
 		data.put("api_id", 12306);
@@ -30,14 +39,22 @@ public class DataUtil {
 		data.put("output", output);
 		data.put("result_time", 1480411648L);
 		
-//		String json = JsonTransferUtil.ObjectToJson(data);
-//		System.out.println(json);
-		for (int i=0; i<30; i++) {
+		String json = JsonTransferUtil.ObjectToJson(data);
+		System.out.println(json);*/
+		
+		for (int i=0; i<5; i++) {
 			yisuoDatas.add(yisouResult);
 		}
 	}
 	
 	public static void main(String[] args) {
-		System.out.println(yisouResult.length());
+		System.out.println(yisouResult);
+		
+		System.out.println(yisouResult.getBytes().length);
+		
+		System.out.println("----------------------------");
+		for (byte b : yisouResult.getBytes()) {
+			System.out.println("byte is " + b + ", string is " + (char) b);
+		}
 	}
 }

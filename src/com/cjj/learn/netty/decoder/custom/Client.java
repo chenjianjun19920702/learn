@@ -62,6 +62,7 @@ public class Client {
 				}
 			};
 			exec.submit(runnable); 
+//			Thread.sleep(1000);
 		}
 	    begin.countDown(); // begin减一，开始并发执行  
 	    exec.shutdown();
