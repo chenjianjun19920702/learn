@@ -1,5 +1,8 @@
 package com.cjj.learn.desginpattern.decorator;
 
+/**
+ * 装饰角色
+ */
 public class Change implements TheMonkeyKing {
 	
 	private TheMonkeyKing sage;

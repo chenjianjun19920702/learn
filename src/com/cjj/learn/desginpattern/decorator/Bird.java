@@ -1,5 +1,8 @@
 package com.cjj.learn.desginpattern.decorator;
 
+/**
+ * 具体装饰角色
+ */
 public class Bird extends Change {
 
 	public Bird(TheMonkeyKing sage) {
