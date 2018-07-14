@@ -23,6 +23,22 @@ public class DataUtil {
 			+ "\"result_time\":1480411648"
 			+ "}";
 	
+	public final static String beginFlag = "{\"task_type\":";
+	
+	public final static String endFlagS = "},\"result_time\":";
+	
+	public final static String endFlagM = "1480411648";
+	
+	public final static String endFlagE = "}";
+	
+	public final static byte[] endFlagSBytes = endFlagS.getBytes();
+	
+	public final static byte[] endFlagMBytes = endFlagM.getBytes();
+	
+	public final static byte[] endFlagEBytes = endFlagE.getBytes();
+	
+	public final static String dity = "{cjjsdsj{{fsjfh}}sfsjgjsjfsjjg}";
+	
 	static {
 		
 		/*Map<String, Object> data = new HashMap<String, Object>();
@@ -43,7 +59,9 @@ public class DataUtil {
 		System.out.println(json);*/
 		
 		for (int i=0; i<5; i++) {
-			yisuoDatas.add(yisouResult);
+			// 先给点脏数据
+//			yisuoDatas.add(dity);
+			yisuoDatas.add(dity+yisouResult+dity);
 		}
 	}
 	
@@ -56,5 +74,16 @@ public class DataUtil {
 		for (byte b : yisouResult.getBytes()) {
 			System.out.println("byte is " + b + ", string is " + (char) b);
 		}
+		
+		byte[] temp = new byte[27];
+		System.out.println(temp.length);
+		
+		System.out.println(DataUtil.endFlagS.startsWith("},"));
+		
+		System.out.println("},\"result_time\":" == DataUtil.endFlagS);
+		
+		System.out.println(dity.length());
+		
+		System.out.println(beginFlag.length());
 	}
 }
