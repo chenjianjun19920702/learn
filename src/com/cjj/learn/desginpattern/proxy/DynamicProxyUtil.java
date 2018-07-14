@@ -32,5 +32,4 @@ public class DynamicProxyUtil {
         Subject sub = (Subject) proxy.bind(new RealSubject());	
         sub.request();
     }  
-
 }

@@ -6,6 +6,7 @@ public class SingletonUtil {
 	}
 
 	public static void main(String args[]) {
+		
 		Singleton singleton1 = Singleton.INSTANCE;
 		Singleton singleton2 = Singleton.INSTANCE;
 		singleton1.doSomeThing();

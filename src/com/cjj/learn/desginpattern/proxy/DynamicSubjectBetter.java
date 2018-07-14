@@ -5,7 +5,7 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
 /**
-          作者：雨夜偷牛的人
+    作者：雨夜偷牛的人
 	链接：https://www.zhihu.com/question/20794107/answer/23330381
 	来源：知乎
 	著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
@@ -20,8 +20,7 @@ public class DynamicSubjectBetter implements InvocationHandler {
 	/**
 	 * 绑定委托对象，并返回代理类
 	 */
-	public Object bind(Object sub)
-	{
+	public Object bind(Object sub) {
 		this.sub = sub;
 		// 绑定该类实现的所有接口，取得代理类 
 		return Proxy.newProxyInstance(sub.getClass().getClassLoader(),

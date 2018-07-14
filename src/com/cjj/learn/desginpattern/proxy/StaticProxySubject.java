@@ -7,7 +7,7 @@ package com.cjj.learn.desginpattern.proxy;
  */ 
 public class StaticProxySubject implements Subject {
 	
-	private RealSubject realSubject = null;
+	private RealSubject realSubject =  new RealSubject(); 
 
 	public StaticProxySubject() {
 		// TODO Auto-generated constructor stub
@@ -18,15 +18,13 @@ public class StaticProxySubject implements Subject {
      * 如：preRequest()和postRequest() 
      */  
     @Override  
-    public void request() {  
-        preRequest();  //真实角色操作前的附加操作  
+    public void request() { 
+    	
+        preRequest();  
           
-        if(realSubject == null){  
-            realSubject =  new RealSubject();  
-        }  
         realSubject.request();  
           
-        postRequest();  //真实角色操作后的附加操作  
+        postRequest();  
     }  
   
     /** 
@@ -44,5 +42,4 @@ public class StaticProxySubject implements Subject {
         // TODO Auto-generated method stub  
     	System.out.println("preRequest.....");
     }  
-
 }
