@@ -14,6 +14,8 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
+import io.netty.util.concurrent.Future;
+import io.netty.util.concurrent.GenericFutureListener;
 
 public class Client {
 
@@ -55,7 +57,12 @@ public class Client {
 				public void run() {
 					try {
 						begin.await(); // 等待直到 CountDownLatch减到1
-						cf1.channel().writeAndFlush(Unpooled.copiedBuffer(DataUtil.yisuoDatas.get(index-1).getBytes()));
+						
+						ChannelFuture cf = cf1.channel().writeAndFlush(
+								Unpooled.copiedBuffer(DataUtil.yisuoDatas.get(index-1).getBytes()));
+						cf.await();
+						System.out.println(index + " isSuccess " + cf.isSuccess());
+						System.out.println(index + " isDone " + cf.isDone());
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
