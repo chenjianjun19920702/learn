@@ -1,9 +1,6 @@
 package com.cjj.learn.concurrent.reentrantlock;
 
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.locks.Condition;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * 条件变量很大一个程度上是为了解决Object.wait/notify/notifyAll难以使用的问题
@@ -24,8 +21,14 @@ public class UseObject {
 		synchronized (obj) {
 			System.out.println("当前线程：" + Thread.currentThread().getName() + "进去，开始执行...");
 			obj.notify();
+//			try {
+//				TimeUnit.SECONDS.sleep(2);
+//			} catch (InterruptedException e) {
+//				e.printStackTrace();
+//			}
 			System.out.println("当前线程：" + Thread.currentThread().getName() +"被唤醒，继续执行...");
 		}
+		// 同步代码块执行完  才会释放锁  通知t1
 	}
 	
 	public static void main(String[] args) throws InterruptedException {
@@ -52,9 +55,6 @@ public class UseObject {
 		
 		t1.start();
 		TimeUnit.SECONDS.sleep(2);
-//		t2.start();
+		t2.start();
 	}
-	
-	
-	
 }

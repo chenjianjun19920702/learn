@@ -57,8 +57,5 @@ public class UseReentrantLock {
 		}, "t2");
 
 		t2.start();
-		//System.out.println(ur.lock.getQueueLength());
 	}
-	
-	
 }

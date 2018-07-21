@@ -65,7 +65,4 @@ public class UseCondition {
 		TimeUnit.SECONDS.sleep(2);
 		t2.start();
 	}
-	
-	
-	
 }

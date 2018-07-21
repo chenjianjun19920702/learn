@@ -4,11 +4,6 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicStampedReference;
 
-/**
- * 
- * @author chenjianjun
- *
- */
 public class ABA {
     
     private static AtomicInteger atomicInt = new AtomicInteger(100);
@@ -50,10 +45,13 @@ public class ABA {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                atomicStampedRef.compareAndSet(100, 101, 
+                // aba
+                boolean c1 = atomicStampedRef.compareAndSet(100, 101, 
                         atomicStampedRef.getStamp(), atomicStampedRef.getStamp()+1);
-                atomicStampedRef.compareAndSet(101, 100, 
+                boolean c2 = atomicStampedRef.compareAndSet(101, 100, 
                         atomicStampedRef.getStamp(), atomicStampedRef.getStamp()+1);
+                System.out.println("refT1 c1 " + c1);  
+                System.out.println("refT1 c2 " + c2);  
             }
         });
         
@@ -67,7 +65,7 @@ public class ABA {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                System.out.println("after sleep : stamp = " + atomicStampedRef.getStamp());//stamp = 1
+                System.out.println("after sleep : stamp = " + atomicStampedRef.getStamp()); // stamp = 2
                 boolean c3 = atomicStampedRef.compareAndSet(100, 101, stamp, stamp+1);
                 System.out.println(c3);        //false
             }
@@ -76,5 +74,4 @@ public class ABA {
         refT1.start();
         refT2.start();
     }
-
 }

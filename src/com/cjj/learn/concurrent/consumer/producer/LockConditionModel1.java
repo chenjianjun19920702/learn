@@ -8,22 +8,27 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class LockConditionModel1 implements Model {
+	
 	private final Lock BUFFER_LOCK = new ReentrantLock();
 	private final Condition BUFFER_COND = BUFFER_LOCK.newCondition();
 	private final Queue<Task> buffer = new LinkedList<Task>();
 	private final int cap;
 	private final AtomicInteger increTaskNo = new AtomicInteger(0);
+	
 	public LockConditionModel1(int cap) {
 		this.cap = cap;
 	}
+	
 	@Override
 	public Runnable newRunnableConsumer() {
 		return new ConsumerImpl();
 	}
+	
 	@Override
 	public Runnable newRunnableProducer() {
 		return new ProducerImpl();
 	}
+	
 	private class ConsumerImpl extends AbstractConsumer implements Consumer, Runnable {
 		@Override
 		public void consume() throws InterruptedException {
@@ -43,6 +48,7 @@ public class LockConditionModel1 implements Model {
 			}
 		}
 	}
+	
 	private class ProducerImpl extends AbstractProducer implements Producer, Runnable {
 		@Override
 		public void produce() throws InterruptedException {
@@ -62,6 +68,7 @@ public class LockConditionModel1 implements Model {
 			}
 		}
 	}
+	
 	public static void main(String[] args) {
 		Model model = new LockConditionModel1(3);
 		for (int i = 0; i < 2; i++) {

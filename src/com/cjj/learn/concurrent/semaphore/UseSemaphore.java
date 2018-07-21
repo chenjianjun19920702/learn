@@ -48,5 +48,4 @@ public class UseSemaphore {
         // 退出线程池  
         exec.shutdown();  
     }  
-  
 }  

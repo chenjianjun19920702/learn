@@ -109,7 +109,6 @@ public class UseManyCondition {
 		t1.start();	// c1
 		t2.start();	// c1
 		t3.start();	// c2
-		
 
 		try {
 			Thread.sleep(2000);
@@ -124,9 +123,5 @@ public class UseManyCondition {
 			e.printStackTrace();
 		}
 		t5.start();	// c2
-		
 	}
-	
-	
-	
 }

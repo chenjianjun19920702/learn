@@ -5,21 +5,25 @@ public class UseThreadLocal {
 	public static class MyRunnable implements Runnable {
 		
 		private ThreadLocal<Object> threadLocal = new ThreadLocal<Object>();
+		
+		private int value = 1;
 
 		@Override
 		public void run() {
+			System.out.println("-------begin--------");
 			threadLocal.set((int) (Math.random() * 100D));
+			System.out.println("value " + value);
+			value = (int) (Math.random() * 100D);
 			try {
 				System.out.println(threadLocal.get());
-				System.out.println("zzzzzzzzzzzzzzz");
 				Thread.sleep(2000);
-				System.out.println("---------------");
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 			System.out.println(threadLocal.get());
+			System.out.println("value " + value);
+			System.out.println("-------end--------");
 		}
-		
 	}
 	
 	public static void main(String[] args) {
@@ -37,8 +41,4 @@ public class UseThreadLocal {
 		thread1.run();
 		thread2.run();
 	}
-
-	
-	
-
 }
