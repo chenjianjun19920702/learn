@@ -49,7 +49,6 @@ public class DistributedDelayQueueDemo {
 			}
 			System.out.println(new Date().getTime() + ": already put all items");
 
-
 			Thread.sleep(2000);
 
 		} catch (Exception ex) {
@@ -78,9 +77,7 @@ public class DistributedDelayQueueDemo {
 	}
 
 	private static QueueConsumer<String> createQueueConsumer() {
-
 		return new QueueConsumer<String>() {
-
 			@Override
 			public void stateChanged(CuratorFramework client, ConnectionState newState) {
 				System.out.println("connection new state: " + newState.name());
@@ -90,7 +87,6 @@ public class DistributedDelayQueueDemo {
 			public void consumeMessage(String message) throws Exception {
 				System.out.println(new Date().getTime() + ": consume one message: " + message);
 			}
-
 		};
 	}
 }
