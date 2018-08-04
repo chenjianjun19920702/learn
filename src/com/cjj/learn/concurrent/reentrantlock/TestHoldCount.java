@@ -8,7 +8,7 @@ import java.util.concurrent.locks.ReentrantLock;
  */
 public class TestHoldCount {
 
-	//重入锁
+	// 重入锁
 	private ReentrantLock lock = new ReentrantLock();
 	
 	public void m1(){
@@ -16,9 +16,8 @@ public class TestHoldCount {
 			lock.lock();
 			System.out.println("进入m1方法，获得锁，holdCount数为：" + lock.getHoldCount());
 			
-			//调用m2方法
+			// 调用m2方法
 			m2();
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -38,7 +37,6 @@ public class TestHoldCount {
 			System.out.println("退出m2方法，释放锁，holdCount数为：" + lock.getHoldCount());
 		}
 	}
-	
 	
 	public static void main(String[] args) {
 		TestHoldCount thc = new TestHoldCount();

@@ -29,6 +29,7 @@ public class SimpleDistributedQueueDemo {
 			Producer producer = new Producer(queue);
 			Consumer consumer = new Consumer(queue);
 			new Thread(producer, "producer").start();
+			Thread.sleep(2000);
 			new Thread(consumer, "consumer").start();
 			Thread.sleep(2000);
 		} catch (Exception ex) {
@@ -82,6 +83,4 @@ public class SimpleDistributedQueueDemo {
 			}
 		}
 	}
-
-
 }

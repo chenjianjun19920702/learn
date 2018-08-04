@@ -24,14 +24,17 @@ public class LockConditionModel2 implements Model {
 	public LockConditionModel2(int cap) {
 		this.cap = cap;
 	}
+	
 	@Override
 	public Runnable newRunnableConsumer() {
 		return new ConsumerImpl();
 	}
+	
 	@Override
 	public Runnable newRunnableProducer() {
 		return new ProducerImpl();
 	}
+	
 	private class ConsumerImpl extends AbstractConsumer implements Consumer, Runnable {
 		@Override
 		public void consume() throws InterruptedException {
@@ -64,6 +67,7 @@ public class LockConditionModel2 implements Model {
 			}
 		}
 	}
+	
 	private class ProducerImpl extends AbstractProducer implements Producer, Runnable {
 		@Override
 		public void produce() throws InterruptedException {
@@ -96,6 +100,7 @@ public class LockConditionModel2 implements Model {
 			}
 		}
 	}
+	
 	private static class Buffer<E> {
 		private Node head;
 		private Node tail;
@@ -121,6 +126,7 @@ public class LockConditionModel2 implements Model {
 			}
 		}
 	}
+	
 	public static void main(String[] args) {
 		Model model = new LockConditionModel2(3);
 		for (int i = 0; i < 2; i++) {

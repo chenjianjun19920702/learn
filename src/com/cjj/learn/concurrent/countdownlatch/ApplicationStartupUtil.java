@@ -50,7 +50,7 @@ public class ApplicationStartupUtil {
 			service.execute(checker);
 		}
 		
-		// Now wait till all services are checked
+		// Now wait untill all services are checked
         _latch.await();
         
         service.shutdown();

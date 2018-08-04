@@ -11,7 +11,7 @@ package com.cjj.learn.concurrent.queue;
  * 下面的例子是测试利用cache line的特性和不利用cache line的特性的效果对比。
  */
 public class CacheLineEffect {
-    //考虑一般缓存行大小是64字节，一个 long 类型占8字节
+    // 考虑一般缓存行大小是64字节，一个 long 类型占8字节
     static  long[][] arr;
 
     public static void main(String[] args) {

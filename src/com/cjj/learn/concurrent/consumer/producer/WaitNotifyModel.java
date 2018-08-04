@@ -2,9 +2,6 @@ package com.cjj.learn.concurrent.consumer.producer;
 
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.Random;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -35,7 +32,6 @@ public class WaitNotifyModel implements Model {
 		return new ProducerImpl();
 	}
 	
-	
 	public class ConsumerImpl extends AbstractConsumer implements Consumer, Runnable {
 
 		@Override
@@ -51,13 +47,10 @@ public class WaitNotifyModel implements Model {
 		        System.out.println("consume: " + task.getId());
 		        block.notifyAll();
 			}
-			
 		}
-		
 	}
 	
 	public class ProducerImpl extends AbstractProducer implements Producer, Runnable {
-
 		@Override
 		public void produce() throws InterruptedException {
 			synchronized(block) {
@@ -73,7 +66,6 @@ public class WaitNotifyModel implements Model {
 		        block.notifyAll();
 			}
 		}
-
 	}
 	
 	public static void main(String[] args) {

@@ -32,6 +32,7 @@ public class InterProcessSemaphoreDemo {
 
             resource.use();
 
+            // 这里不够了，超时机制
             Collection<Lease> leases2 = semaphore.acquire(5, 10, TimeUnit.SECONDS);
             System.out.println("Should timeout and acquire return " + leases2);
 

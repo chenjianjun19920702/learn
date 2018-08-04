@@ -35,8 +35,8 @@ public class TestIsFair {
 	private ReentrantLock lock;
 	
 	public static void main(String[] args) {
-		boolean isFair = false;
-		isFair = true;
+		boolean isFair = false;	// 默认
+//		isFair = true;
 		final TestIsFair fair = new TestIsFair(isFair);
 		Thread t1 = new Thread() {
 			public void run() {
