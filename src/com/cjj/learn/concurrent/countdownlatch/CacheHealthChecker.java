@@ -1,5 +1,6 @@
 package com.cjj.learn.concurrent.countdownlatch;
 
+import java.util.Random;
 import java.util.concurrent.CountDownLatch;
 
 public class CacheHealthChecker extends BaseHealthChecker {
@@ -13,7 +14,7 @@ public class CacheHealthChecker extends BaseHealthChecker {
 		try {
 			// 模拟检测
 			System.out.println("Checking " + this.getServiceName());
-			Thread.sleep(6*1000);
+			Thread.sleep(new Random().nextInt(5));
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
